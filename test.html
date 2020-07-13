@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .v {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <video class="v" autoplay></video>
+    <script>
+      const init = async () => {
+        /**
+         * videoŽæ“¾
+         * @type {HTMLVideoElement}
+         */
+        const video = document.querySelector('.v')
+        try {
+          // PC‰æ–Ê‚ÌstreamŽæ“¾
+          const stream = await navigator.mediaDevices.getDisplayMedia({
+            video: true
+          })
+
+          // stream‚ðvideo‚É‚Â‚È‚°‚é
+          video.srcObject = stream
+        } catch (e) {
+          return
+        }
+      }
+      init()
+    </script>
+  </body>
+</html>
